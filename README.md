@@ -1,5 +1,5 @@
 # Requisitos
 
 - Intellij 2021
-- Chrome atualizado
+- Google Chrome atualizado
 - Git
