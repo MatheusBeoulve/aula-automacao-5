@@ -1,3 +1,29 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:62264f48b4d561bd36cb2238d4d2d1500249cc0eb4f977f4b0bdfe5b418c1483
-size 1006
+package io.exemplo.automacao.tests;
+
+import io.exemplo.automacao.extensions.WebDriverExtension;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+@ExtendWith(WebDriverExtension.class)
+public class PrimeiroWebDriverTest {
+
+    @Test
+    public void abrirYoutubeValidandoTituloDoVideo(WebDriver webDriver) {
+        webDriver.get("https://matheusbeoulve.github.io/aulas/aula1/");
+
+        webDriver.findElement(By.cssSelector("#criar-conta")).click();
+
+        webDriver.findElement(By.cssSelector("#usuario")).sendKeys("Nome");
+        webDriver.findElement(By.cssSelector("#senha")).sendKeys("Senha123");
+
+        webDriver.findElement(By.cssSelector("#enviar")).click();
+
+        String mensagem = webDriver.findElement(By.cssSelector("#sucesso")).getText();
+
+        assertEquals("Sua conta foi criada com sucesso!", mensagem);
+    }
+}
