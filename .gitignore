@@ -1,11 +1,3 @@
-target/
-pom.xml.tag
-pom.xml.releaseBackup
-pom.xml.versionsBackup
-pom.xml.next
-release.properties
-dependency-reduced-pom.xml
-buildNumber.properties
-.mvn/timing.properties
-# https://github.com/takari/maven-wrapper#usage-without-binary-jar
-.mvn/wrapper/maven-wrapper.jar
+version https://git-lfs.github.com/spec/v1
+oid sha256:7ee42a284aa189180fa87898f5c93ec50f9f1af3322f763a1ca9fa15e584246c
+size 276
