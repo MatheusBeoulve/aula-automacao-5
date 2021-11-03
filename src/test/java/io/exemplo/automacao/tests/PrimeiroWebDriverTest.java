@@ -12,18 +12,24 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class PrimeiroWebDriverTest {
 
     @Test
-    public void abrirYoutubeValidandoTituloDoVideo(WebDriver webDriver) {
+    public void primeiroExemplo(WebDriver webDriver) {
         webDriver.get("https://matheusbeoulve.github.io/aulas/aula1/");
 
         webDriver.findElement(By.cssSelector("#criar-conta")).click();
 
         webDriver.findElement(By.cssSelector("#usuario")).sendKeys("Nome");
         webDriver.findElement(By.cssSelector("#senha")).sendKeys("Senha123");
+        webDriver.findElement(By.cssSelector("#confirmar-senha")).sendKeys("Senha123");
 
         webDriver.findElement(By.cssSelector("#enviar")).click();
 
         String mensagem = webDriver.findElement(By.cssSelector("#sucesso")).getText();
 
         assertEquals("Sua conta foi criada com sucesso!", mensagem);
+    }
+
+    @Test
+    public void primeiroDesafio(WebDriver webDriver) {
+        // Escreva aqui o codigo
     }
 }

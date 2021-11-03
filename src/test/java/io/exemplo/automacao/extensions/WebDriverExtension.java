@@ -8,25 +8,26 @@ import org.junit.jupiter.api.extension.support.TypeBasedParameterResolver;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeDriverService;
-import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.io.File;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 
-public class WebDriverExtension extends TypeBasedParameterResolver<WebDriver>
+public class WebDriverExtension
+        extends TypeBasedParameterResolver<WebDriver>
         implements AfterTestExecutionCallback {
 
+
     private static final String KEY = "WebDriver";
-    private static final Boolean DONT_USE_LOCAL_DRIVER = Boolean.getBoolean("dont-use-local-driver");
     private static final Integer DEFAULT_IMPLICITLY_TIMEOUT = 10;
+
 
     public WebDriver resolveParameter(ParameterContext parameterContext,
                                       ExtensionContext extensionContext)
             throws ParameterResolutionException {
         return (WebDriver) extensionContext.getStore(ExtensionContext.Namespace.GLOBAL)
-                .getOrComputeIfAbsent(KEY, ignore -> DONT_USE_LOCAL_DRIVER ? new ChromeDriver() : instantiateWebDriver());
+                .getOrComputeIfAbsent(KEY, ignore -> instantiateWebDriver());
     }
 
     public void afterTestExecution(ExtensionContext context) {
@@ -41,11 +42,7 @@ public class WebDriverExtension extends TypeBasedParameterResolver<WebDriver>
                 .usingDriverExecutable(loadFileFromClasspath("chromedriver.exe"))
                 .build();
 
-        ChromeOptions chromeOptions = new ChromeOptions()
-                .addArguments("--incognito", "--no-first-run")
-                .setBinary(loadFileFromClasspath("chrome.exe"));
-
-        WebDriver webDriver = new ChromeDriver(chromeDriverService, chromeOptions);
+        WebDriver webDriver = new ChromeDriver(chromeDriverService);
 
         webDriver.manage().timeouts().implicitlyWait(DEFAULT_IMPLICITLY_TIMEOUT, TimeUnit.SECONDS);
 
