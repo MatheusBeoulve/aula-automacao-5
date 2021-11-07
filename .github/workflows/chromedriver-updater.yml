@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Run update chromedriver script
-        run: >
+        run: |
           latest_version=$(curl "https://chromedriver.storage.googleapis.com/LATEST_RELEASE" --silent)
           current_version=$(cat ./chromedriver/version)
           if [ $latest_version = $current_version ]; then
