@@ -27,7 +27,9 @@ jobs:
               rm temp.zip
               echo $latest_version > version
               cd ..
+              git config user.name "GitHub Actions Bot"
+              git config user.email "<>"
               git add chromedriver/chromedriver.exe chromedriver/version
               git commit -m "Updating chromedriver version to $latest_version"
-              git push
+              git push origin staging
           fi
