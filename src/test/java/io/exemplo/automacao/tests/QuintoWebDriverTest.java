@@ -32,4 +32,14 @@ public class QuintoWebDriverTest {
                 .checarCarroAssegurado()
                 .usouSeguro(Assertions::assertTrue);
     }
+
+    @Test
+    public void quandoMotoForAsseguradoPossoEscolherSeOSeguroJaFoiUsado(WebDriver webDriver) {
+        new RegistroTransacaoVeiculo(webDriver)
+                .acessarAulaDois()
+                .registroParaMoto()
+                .usouSeguro(Assertions::assertFalse)
+                .checarMotoAssegurada()
+                .usouSeguro(Assertions::assertTrue);
+    }
 }

@@ -24,4 +24,11 @@ public class RegistroTransacaoVeiculo {
 
         return new RegistroTransacaoCarro(webDriver);
     }
+
+    public RegistroTransacaoMoto registroParaMoto() {
+
+        webDriver.findElement(By.cssSelector("[href='moto.html']")).click();
+
+        return new RegistroTransacaoMoto(webDriver);
+    }
 }
